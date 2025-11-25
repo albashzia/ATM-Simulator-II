@@ -28,7 +28,7 @@ def account_holder_login():
         pin = input("Enter pin:")
         if pin == acc["pin"]:
             print("Welcome",acc["name"])
-            print("Call to member menu ")
+            print("Call to member menu ") # function to be called
             return
         else:
             attempts = attempts - 1
@@ -41,9 +41,9 @@ def main_menu():
     print("2. General User")
     choice = input("Enter choice: ")
     if choice == "1":
-        print("Call account holder login")
+        print("Call account holder login") # function to be called
     elif choice == "2":
-        print("Call main menu for general user")
+        print("Call main menu for general user") # function to be called
     else:
         print("Invalid Option")
 
