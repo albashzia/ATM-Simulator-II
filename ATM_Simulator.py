@@ -39,6 +39,19 @@ def view_balance_member(acc):
     print("Account Holder: ",acc["name"])
     print("Balance :",acc["balance"])
 
+def deposit_money_member(acc):
+    amount = input("Enter amount to deposit: ")
+    if amount.isdigit():
+        amount = int(amount)
+        if amount > 0:
+            acc["balance"] = acc["balance"] + amount
+            print("Deposit Successful")
+            print("New balance: ",acc["balance"])
+        else:
+            print("Amount must be positive")
+    else:
+        print("Invalid Amount")
+
 def member_menu(acc):
     while True:
         print("\n--- ATM Menu (Account Holder) ---")
@@ -53,7 +66,7 @@ def member_menu(acc):
         if choice == "1":
             view_balance_member(acc)
         elif choice == "2":
-            print("Call deposit money member function") # call a function here
+            deposit_money_member(acc)
         elif choice == "3":
             print("Call withraw money member function") # call a function here
         elif choice == "4":
