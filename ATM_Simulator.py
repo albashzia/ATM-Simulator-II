@@ -40,7 +40,7 @@ def main_menu_general():
         if choice == "1":
             print("Call view balance function") # call a function
         elif choice == "2":
-            print("Call deposit money function") # call a function
+            deposit_money_user(balance)
         elif choice == "3":
             print("Withdraw money function") # call a function
         elif choice == "4":
@@ -52,6 +52,20 @@ def main_menu_general():
             break
         else:
             print("Invalid choice.")
+
+def deposit_money_user(balance):
+    amount = input("Enter amount to deposit: ")
+    if amount.isdigit():
+        amount = int(amount)
+        if amount > 0:
+            balance = balance + amount
+            print("Deposited",amount)
+            print("New Balance",balance)
+        else:
+            print("Amount must be positive")
+    else:
+        print("Invalid Amount")
+    return balance
 
 def find_account(account_no):
     for acc in accounts:
