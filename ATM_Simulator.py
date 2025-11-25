@@ -11,6 +11,48 @@ accounts = [
     {"name": "Maria",  "account_no": "42819573", "pin": "8888", "balance": 22000}
 ]
 
+def main_menu_general():
+    default_pin = "9999"
+    attempts = 3
+    while attempts > 0:
+        pin = input("\nEnter your pin: ")
+        if pin == default_pin:
+            print("Access Granted")
+            break
+        else:
+            attempts = attempts - 1
+            print("Incorrect Pin! Attempts Left ", attempts)
+    if attempts == 0:
+        print("Too many wrong attempts. Session Locked.")
+        return
+    current_pin = "9999"
+    balance = 10000
+    while True:
+        print("\n--- ATM Menu (General User) ---")
+        print("1. View Balance")
+        print("2. Deposit Money")
+        print("3. Withdraw Money")
+        print("4. Pay Utility Bills")
+        print("5. Change PIN")
+        print("6. Exit")
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            print("Call view balance function") # call a function
+        elif choice == "2":
+            print("Call deposit money function") # call a function
+        elif choice == "3":
+            print("Withdraw money function") # call a function
+        elif choice == "4":
+            print("Call pay bills function") #call a function
+        elif choice == "5":
+            print("Call change pin function") # call a function
+        elif choice == "6":
+            print("Session ended.")
+            break
+        else:
+            print("Invalid choice.")
+
 def find_account(account_no):
     for acc in accounts:
         if acc["account_no"] == account_no:
