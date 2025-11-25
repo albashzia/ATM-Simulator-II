@@ -57,9 +57,9 @@ def member_menu(acc):
         elif choice == "3":
             print("Call withraw money member function") # call a function here
         elif choice == "4":
-            print=("Call pay utility bills method here") # call a function here 
+            print("Call pay utility bills method here") # call a function here 
         elif choice == "5":
-            print=("Call change pin function here")
+            print("Call change pin function here")
         elif choice == "6":
             print("Session ended.")
             break
