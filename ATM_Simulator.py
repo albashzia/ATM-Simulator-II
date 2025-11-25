@@ -17,33 +17,6 @@ def find_account(account_no):
             return acc
     return None
 
-def member_menu():
-    while True:
-        print("\n--- ATM Menu (Account Holder) ---")
-        print("1. View Balance")
-        print("2. Deposit Money")
-        print("3. Withdraw Money")
-        print("4. Pay Utility Bills")
-        print("5. Change PIN")
-        print("6. Exit")
-
-        choice = input("Enter Choice: ")
-        if choice == "1":
-            print("Call view balance member function") # call a function here
-        elif choice == "2":
-            print("Call deposit money member function") # call a function here
-        elif choice == "3":
-            print("Call withraw money member function") # call a function here
-        elif choice == "4":
-            print=("Call pay utility bills method here") # call a function here 
-        elif choice == "5":
-            print=("Call change pin function here")
-        elif choice == "6":
-            print("Session ended.")
-            break
-        else:
-            print("Invalid Choice")
-
 def account_holder_login():
     acc_no = input("Enter account number: ")
     acc = find_account(acc_no)
@@ -61,6 +34,37 @@ def account_holder_login():
             attempts = attempts - 1
             print("Incorrect Pin! Attempts left",attempts)
     print("Too many failed attempts. Account Locked!")
+
+def view_balance_member(acc):
+    print("Account Holder: ",acc["name"])
+    print("Balance :",acc["balance"])
+
+def member_menu(acc):
+    while True:
+        print("\n--- ATM Menu (Account Holder) ---")
+        print("1. View Balance")
+        print("2. Deposit Money")
+        print("3. Withdraw Money")
+        print("4. Pay Utility Bills")
+        print("5. Change PIN")
+        print("6. Exit")
+
+        choice = input("Enter Choice: ")
+        if choice == "1":
+            view_balance_member(acc)
+        elif choice == "2":
+            print("Call deposit money member function") # call a function here
+        elif choice == "3":
+            print("Call withraw money member function") # call a function here
+        elif choice == "4":
+            print=("Call pay utility bills method here") # call a function here 
+        elif choice == "5":
+            print=("Call change pin function here")
+        elif choice == "6":
+            print("Session ended.")
+            break
+        else:
+            print("Invalid Choice")
 
 def main_menu():
     print("\n======WELCOME TO ATM======")
