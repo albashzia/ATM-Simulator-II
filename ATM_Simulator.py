@@ -28,7 +28,7 @@ def account_holder_login():
         pin = input("Enter pin:")
         if pin == acc["pin"]:
             print("Welcome",acc["name"])
-            print("Call to member menu ") # function to be called
+            member_menu(acc)
             return
         else:
             attempts = attempts - 1
