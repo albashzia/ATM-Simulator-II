@@ -11,6 +11,12 @@ accounts = [
     {"name": "Maria",  "account_no": "42819573", "pin": "8888", "balance": 22000}
 ]
 
+def find_account(account_no):
+    for acc in accounts:
+        if acc["account_no"] == account_no:
+            return acc
+    return None
+
 def main_menu():
     print("\n======WELCOME TO ATM======")
     print("1. Account Holder")
