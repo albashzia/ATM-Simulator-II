@@ -101,6 +101,7 @@ def main_menu_general():
             break
         else:
             print("Invalid choice.")
+            main_menu_general()
 
 def view_balance_user(balance):
     print("Your balance is",balance)
@@ -146,6 +147,7 @@ def account_holder_login():
     acc = find_account(acc_no)
     if acc is None:
         print("Account not found")
+        main_menu()
         return
     attempts = 3
     while attempts > 0:
@@ -215,6 +217,7 @@ def member_menu(acc):
             break
         else:
             print("Invalid Choice")
+            member_menu(acc)
 
 def main_menu():
     print("\n======WELCOME TO ATM======")
@@ -224,9 +227,10 @@ def main_menu():
     if choice == "1":
         account_holder_login()
     elif choice == "2":
-        print("Call main menu for general user") # function to be called
+        main_menu_general()
     else:
         print("Invalid Option")
+        main_menu()
 
 #=========== Program Start ==============
 main_menu()
