@@ -38,7 +38,7 @@ def main_menu_general():
         choice = input("Enter choice: ")
 
         if choice == "1":
-            print("Call view balance function") # call a function
+            view_balance_user(balance)
         elif choice == "2":
             deposit_money_user(balance)
         elif choice == "3":
@@ -52,6 +52,10 @@ def main_menu_general():
             break
         else:
             print("Invalid choice.")
+
+def view_balance_user(balance):
+    print("Your balance is",balance)
+    return balance
 
 def deposit_money_user(balance):
     amount = input("Enter amount to deposit: ")
