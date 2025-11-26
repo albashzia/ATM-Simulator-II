@@ -42,7 +42,7 @@ def main_menu_general():
         elif choice == "2":
             deposit_money_user(balance)
         elif choice == "3":
-            print("Withdraw money function") # call a function
+            withdraw_money_user(balance)
         elif choice == "4":
             print("Call pay bills function") #call a function
         elif choice == "5":
@@ -65,6 +65,21 @@ def deposit_money_user(balance):
             print("Amount must be positive")
     else:
         print("Invalid Amount")
+    return balance
+
+def withdraw_money_user(balance):
+    amount = input("Enter amount to withdraw: ")
+    if amount.isdigit():
+        amount = int(amount)
+        if amount <= balance:
+            balance = balance - amount
+            print("Withdrawn:", amount)
+            print("New balance:", balance)
+        else:
+            print("Insufficient balance.")
+    else:
+        print("Invalid amount")
+
     return balance
 
 def find_account(account_no):
