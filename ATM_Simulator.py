@@ -84,6 +84,7 @@ def main_menu_general():
         print("4. Pay Utility Bills")
         print("5. Change PIN")
         print("6. Exit")
+        print("7. Return to Main Menu")
         choice = input("Enter choice: ")
 
         if choice == "1":
@@ -99,6 +100,10 @@ def main_menu_general():
         elif choice == "6":
             print("Session ended.")
             break
+        elif choice == "7":
+            main_menu()
+            break
+
         else:
             print("Invalid choice.")
             main_menu_general()
@@ -200,6 +205,7 @@ def member_menu(acc):
         print("4. Pay Utility Bills")
         print("5. Change PIN")
         print("6. Exit")
+        print("7. Return to Main Menu")
 
         choice = input("Enter Choice: ")
         if choice == "1":
@@ -215,6 +221,10 @@ def member_menu(acc):
         elif choice == "6":
             print("Session ended.")
             break
+        elif choice == "7":
+            main_menu()
+            break
+
         else:
             print("Invalid Choice")
             member_menu(acc)
