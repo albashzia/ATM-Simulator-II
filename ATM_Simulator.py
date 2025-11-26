@@ -19,9 +19,7 @@ def Pay_UtilityBills(balance):
     print("4. Internet/Wifi Bill")
     print("5. Telephone/Mobile Bill")
     print("6. Back to Main Menu")
-
     choice = input("Enter your choice: ")
-
     if choice in ["1", "2", "3", "4", "5"]:
         amount = input("Enter bill amount: ")
         if amount.isdigit():
@@ -38,25 +36,19 @@ def Pay_UtilityBills(balance):
         print("Returning to main menu...")
     else:
         print("Invalid choice. Returning to main menu...")
-
     return balance
 
 def change_Pin(current_Pin):
     print("\n== Change PIN ==")
-
     old_pin = input("Enter old PIN: ")
-
     if old_pin != current_Pin:
         print("Incorrect PIN")
         return current_Pin
-
     new_pin = input("Enter new PIN: ")
     confirm_pin = input("Re-enter new PIN: ")
-
     if new_pin != confirm_pin:
         print("PINs do not match")
         return current_Pin
-
     print("PIN changed successfully!")
     return new_pin
 
@@ -86,7 +78,6 @@ def main_menu_general():
         print("6. Exit")
         print("7. Return to Main Menu")
         choice = input("Enter choice: ")
-
         if choice == "1":
             view_balance_user(balance)
         elif choice == "2":
@@ -103,7 +94,6 @@ def main_menu_general():
         elif choice == "7":
             main_menu()
             break
-
         else:
             print("Invalid choice.")
             main_menu_general()
@@ -138,7 +128,6 @@ def withdraw_money_user(balance):
             print("Insufficient balance.")
     else:
         print("Invalid amount")
-
     return balance
 
 def find_account(account_no):
@@ -206,7 +195,6 @@ def member_menu(acc):
         print("5. Change PIN")
         print("6. Exit")
         print("7. Return to Main Menu")
-
         choice = input("Enter Choice: ")
         if choice == "1":
             view_balance_member(acc)
@@ -224,7 +212,6 @@ def member_menu(acc):
         elif choice == "7":
             main_menu()
             break
-
         else:
             print("Invalid Choice")
             member_menu(acc)
@@ -241,6 +228,5 @@ def main_menu():
     else:
         print("Invalid Option")
         main_menu()
-
 #=========== Program Start ==============
 main_menu()
