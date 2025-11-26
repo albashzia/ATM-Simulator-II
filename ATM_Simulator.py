@@ -11,6 +11,36 @@ accounts = [
     {"name": "Maria",  "account_no": "42819573", "pin": "8888", "balance": 22000}
 ]
 
+def Pay_UtilityBills(balance):
+    print("\n----- PAY UTILITY BILLS -----")
+    print("1. Electricity Bill")
+    print("2. Gas Bill")
+    print("3. Water Bill")
+    print("4. Internet/Wifi Bill")
+    print("5. Telephone/Mobile Bill")
+    print("6. Back to Main Menu")
+
+    choice = input("Enter your choice: ")
+
+    if choice in ["1", "2", "3", "4", "5"]:
+        amount = input("Enter bill amount: ")
+        if amount.isdigit():
+            amount = int(amount)
+            if amount > balance:
+                print("Balance is insufficient")
+            else:
+                balance = balance - amount
+                print("Bill paid successfully")
+                print("Remaining Balance:", balance)
+        else:
+            print("Invalid bill amount")
+    elif choice == "6":
+        print("Returning to main menu...")
+    else:
+        print("Invalid choice. Returning to main menu...")
+
+    return balance
+
 def main_menu_general():
     default_pin = "9999"
     attempts = 3
@@ -44,7 +74,7 @@ def main_menu_general():
         elif choice == "3":
             withdraw_money_user(balance)
         elif choice == "4":
-            print("Call pay bills function") #call a function
+            Pay_UtilityBills(balance)
         elif choice == "5":
             print("Call change pin function") # call a function
         elif choice == "6":
@@ -158,7 +188,7 @@ def member_menu(acc):
         elif choice == "3":
             withdraw_money_member(acc)
         elif choice == "4":
-            print("Call pay utility bills method here") # call a function here 
+            acc["balance"] = Pay_UtilityBills(acc["balance"])
         elif choice == "5":
             print("Call change pin function here")
         elif choice == "6":
