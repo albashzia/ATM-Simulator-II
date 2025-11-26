@@ -41,6 +41,25 @@ def Pay_UtilityBills(balance):
 
     return balance
 
+def change_Pin(current_Pin):
+    print("\n== Change PIN ==")
+
+    old_pin = input("Enter old PIN: ")
+
+    if old_pin != current_Pin:
+        print("Incorrect PIN")
+        return current_Pin
+
+    new_pin = input("Enter new PIN: ")
+    confirm_pin = input("Re-enter new PIN: ")
+
+    if new_pin != confirm_pin:
+        print("PINs do not match")
+        return current_Pin
+
+    print("PIN changed successfully!")
+    return new_pin
+
 def main_menu_general():
     default_pin = "9999"
     attempts = 3
@@ -76,7 +95,7 @@ def main_menu_general():
         elif choice == "4":
             Pay_UtilityBills(balance)
         elif choice == "5":
-            print("Call change pin function") # call a function
+            current_pin = change_Pin(current_pin)
         elif choice == "6":
             print("Session ended.")
             break
@@ -190,7 +209,7 @@ def member_menu(acc):
         elif choice == "4":
             acc["balance"] = Pay_UtilityBills(acc["balance"])
         elif choice == "5":
-            print("Call change pin function here")
+            acc["pin"] = change_Pin(acc["pin"])
         elif choice == "6":
             print("Session ended.")
             break
