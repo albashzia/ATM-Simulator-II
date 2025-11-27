@@ -182,8 +182,12 @@ def withdraw_money_member(acc):
             print("New Balance :",acc["balance"])
         else:
             print("Insufficient Balance")
+            print("Try again")
+            withdraw_money_member(acc)
     else:
         print("Invalid Amount")
+        print("Try again")
+        withdraw_money_member(acc)
 
 def member_menu(acc):
     while True:
