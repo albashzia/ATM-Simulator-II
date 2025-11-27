@@ -112,8 +112,12 @@ def deposit_money_user(balance):
             print("New Balance",balance)
         else:
             print("Amount must be positive")
+            print("Try Again")
+            deposit_money_user(balance)
     else:
         print("Invalid Amount")
+        print("Try Again")
+        deposit_money_user(balance)
     return balance
 
 def withdraw_money_user(balance):
