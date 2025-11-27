@@ -126,8 +126,12 @@ def withdraw_money_user(balance):
             print("New balance:", balance)
         else:
             print("Insufficient balance.")
+            print("Try Again")
+            withdraw_money_user(balance)
     else:
         print("Invalid amount")
+        print("Try Again")
+        withdraw_money_user(balance)
     return balance
 
 def find_account(account_no):
