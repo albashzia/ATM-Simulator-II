@@ -217,16 +217,20 @@ def member_menu(acc):
             member_menu(acc)
 
 def main_menu():
-    print("\n======WELCOME TO ATM======")
-    print("1. Account Holder")
-    print("2. General User")
-    choice = input("Enter choice: ")
-    if choice == "1":
-        account_holder_login()
-    elif choice == "2":
-        main_menu_general()
-    else:
-        print("Invalid Option")
-        main_menu()
+    while True:
+        print("\n======WELCOME TO ATM======")
+        print("1. Account Holder")
+        print("2. General User")
+        print("3. Exit")
+        choice = input("Enter choice: ")
+        if choice == "1":
+            account_holder_login()
+        elif choice == "2":
+            main_menu_general()
+        elif choice == "3":
+            break
+        else:
+            print("Invalid Option")
+            main_menu()
 #=========== Program Start ==============
 main_menu()
