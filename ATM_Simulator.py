@@ -169,8 +169,12 @@ def deposit_money_member(acc):
             print("New balance: ",acc["balance"])
         else:
             print("Amount must be positive")
+            print("Try again")
+            deposit_money_member(acc)
     else:
         print("Invalid Amount")
+        print("Try Again")
+        deposit_money_member(acc)
 
 def withdraw_money_member(acc):
     amount = input("Enter amount to withdraw: ")
