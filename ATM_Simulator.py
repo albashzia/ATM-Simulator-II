@@ -32,6 +32,8 @@ def Pay_UtilityBills(balance):
                 print("Remaining Balance:", balance)
         else:
             print("Invalid bill amount")
+            print("Try Again")
+            Pay_UtilityBills(balance)
     elif choice == "6":
         print("Returning to main menu...")
     else:
