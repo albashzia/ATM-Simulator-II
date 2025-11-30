@@ -207,6 +207,12 @@ def withdraw_money_member(acc):
         print("Invalid Amount")
         print("Try again")
         withdraw_money_member(acc)
+        
+def generate_receipt_member():
+    print("User Name")
+    print("Starting Balance")
+    print("Action Performed")
+    print("Closing Balance")
 
 def member_menu(acc):
     while True:
