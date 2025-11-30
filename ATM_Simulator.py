@@ -139,6 +139,11 @@ def withdraw_money_user(balance):
         print("Try Again")
         withdraw_money_user(balance)
     return balance
+    
+def generate_receipt_user():
+    print(balance)
+    print("Action Performed")
+    print("Current Balance")
 
 def find_account(account_no):
     for acc in accounts:
