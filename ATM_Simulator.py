@@ -91,7 +91,7 @@ def main_menu_general():
         elif choice == "5":
             current_pin = change_Pin(current_pin)
         elif choice == "6":
-            generate_receipt_user()
+            generate_receipt_user(balance)
             print("Session ended.")
             break
         elif choice == "7":
