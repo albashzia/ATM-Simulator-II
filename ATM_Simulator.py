@@ -141,7 +141,7 @@ def withdraw_money_user(balance):
         withdraw_money_user(balance)
     return balance
     
-def generate_receipt_user():
+def generate_receipt_user(balance):
     print(balance)
     print("Action Performed")
     print("Current Balance")
