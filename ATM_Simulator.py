@@ -209,11 +209,11 @@ def withdraw_money_member(acc):
         print("Try again")
         withdraw_money_member(acc)
         
-def generate_receipt_member():
-    print("User Name")
-    print("Starting Balance")
-    print("Action Performed")
-    print("Closing Balance")
+def generate_receipt_member(acc): 
+    print("\n======RECEIPT=======")
+    print(acc["name"])           
+    print("Starting Balance = ", acc["initial_balance"]) 
+    print("Closing Balance = ", acc["balance"])
 
 def member_menu(acc):
     while True:
