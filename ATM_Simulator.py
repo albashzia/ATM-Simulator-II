@@ -237,7 +237,7 @@ def member_menu(acc):
         elif choice == "5":
             acc["pin"] = change_Pin(acc["pin"])
         elif choice == "6":
-            generate_receipt_member()
+            generate_receipt_member(acc)
             print("Session ended.")
             break
         elif choice == "7":
