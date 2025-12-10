@@ -69,7 +69,7 @@ def main_menu_general():
         print("Too many wrong attempts. Session Locked.")
         return
     current_pin = "9999"
-    balance = 10000
+    balance = 25000
     while True:
         print("\n--- ATM Menu (General User) ---")
         print("1. View Balance")
