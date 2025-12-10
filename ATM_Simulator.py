@@ -105,6 +105,7 @@ def main_menu_general():
             print("Invalid choice.")
             main_menu_general()
 
+#function to view balance of the general user
 def view_balance_user(balance):
     print("Your balance is",balance)
     return balance
