@@ -12,6 +12,7 @@ accounts = [
     {"name": "Maria",  "account_no": "42819573", "pin": "8888", "balance": 22000, "initial_balance": 22000}
 ]
 
+#function that works for both general users and account holders
 def Pay_UtilityBills(balance):
     print("\n----- PAY UTILITY BILLS -----")
     print("1. Electricity Bill")
