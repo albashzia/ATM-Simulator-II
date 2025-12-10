@@ -42,6 +42,7 @@ def Pay_UtilityBills(balance):
         print("Invalid choice. Returning to main menu...")
     return balance
 
+#function to change pin
 def change_Pin(current_Pin):
     print("\n== Change PIN ==")
     old_pin = input("Enter old PIN: ")
