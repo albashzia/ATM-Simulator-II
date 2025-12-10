@@ -57,6 +57,7 @@ def change_Pin(current_Pin):
     print("PIN changed successfully!")
     return new_pin
 
+#main menu for general users
 def main_menu_general():
     default_pin = "9999"
     attempts = 3
