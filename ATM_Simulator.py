@@ -1,3 +1,4 @@
+#Default accounts holding data which can be manipulated and accessed by account holders
 accounts = [
     {"name": "Ahmed",  "account_no": "49217385", "pin": "1234", "balance": 12000, "initial_balance": 12000},
     {"name": "Fatima", "account_no": "83726149", "pin": "6789", "balance": 18000, "initial_balance": 18000},
