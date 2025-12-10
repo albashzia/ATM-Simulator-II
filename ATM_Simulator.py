@@ -249,7 +249,9 @@ def member_menu(acc):
 
 def main_menu():
     while True:
-        print("\n======WELCOME TO ATM======")
+        print("\n===========================")
+        print("======WELCOME TO ATM======")
+        print("===========================\n")
         print("1. Account Holder")
         print("2. General User")
         print("3. Exit")
