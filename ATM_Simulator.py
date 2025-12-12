@@ -57,54 +57,6 @@ def change_Pin(current_Pin):
     print("PIN changed successfully!")
     return new_pin
 
-#main menu for general users
-def main_menu_general():
-    default_pin = "9999"
-    attempts = 3
-    while attempts > 0:
-        pin = input("\nEnter your pin: ")
-        if pin == default_pin:
-            print("Access Granted")
-            break
-        else:
-            attempts = attempts - 1
-            print("Incorrect Pin! Attempts Left ", attempts)
-    if attempts == 0:
-        print("Too many wrong attempts. Session Locked.")
-        return
-    current_pin = "9999"
-    balance = 25000
-    while True:
-        print("\n--- ATM Menu (General User) ---")
-        print("1. View Balance")
-        print("2. Deposit Money")
-        print("3. Withdraw Money")
-        print("4. Pay Utility Bills")
-        print("5. Change PIN")
-        print("6. Exit")
-        print("7. Return to Main Menu")
-        choice = input("Enter choice: ")
-        if choice == "1":
-            view_balance_user(balance) #function call
-        elif choice == "2":
-            deposit_money_user(balance) #function call
-        elif choice == "3":
-            withdraw_money_user(balance) #function call
-        elif choice == "4":
-            Pay_UtilityBills(balance) #function call
-        elif choice == "5":
-            current_pin = change_Pin(current_pin) #function call
-        elif choice == "6":
-            generate_receipt_user(balance) #function call
-            print("Session ended.")
-            break
-        elif choice == "7":
-            main_menu() #function call
-            break
-        else:
-            print("Invalid choice.")
-            main_menu_general() #function call
-
 #function to view balance of the general user
 def view_balance_user(balance):
     print("Your balance is",balance)
