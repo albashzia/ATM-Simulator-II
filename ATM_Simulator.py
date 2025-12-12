@@ -151,6 +151,7 @@ def generate_receipt_user(balance):
     print("Action Performed")
     print("Current Balance")
 
+#function to check if an account exists for the account number entered by the user
 def find_account(account_no):
     for acc in accounts:
         if acc["account_no"] == account_no:
