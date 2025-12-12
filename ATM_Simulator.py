@@ -215,7 +215,8 @@ def withdraw_money_member(acc):
         print("Invalid Amount")
         print("Try again")
         withdraw_money_member(acc)
-        
+
+#function to generate receipt upon completion of actions by the user
 def generate_receipt_member(acc): 
     print("\n======RECEIPT=======")
     print(acc["name"])           
