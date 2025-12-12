@@ -166,18 +166,6 @@ def main_menu():
         print("\n===========================")
         print("======WELCOME TO ATM======")
         print("===========================\n")
-        print("1. Account Holder")
-        print("2. General User")
-        print("3. Exit")
-        choice = input("Enter choice: ")
-        if choice == "1":
-            account_holder_login()
-        elif choice == "2":
-            main_menu_general()
-        elif choice == "3":
-            break
-        else:
-            print("Invalid Option")
-            main_menu()
+        account_holder_login()
 #=========== Program Start ==============
 main_menu()
