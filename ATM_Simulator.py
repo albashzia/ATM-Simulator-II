@@ -85,25 +85,25 @@ def main_menu_general():
         print("7. Return to Main Menu")
         choice = input("Enter choice: ")
         if choice == "1":
-            view_balance_user(balance)
+            view_balance_user(balance) #function call
         elif choice == "2":
-            deposit_money_user(balance)
+            deposit_money_user(balance) #function call
         elif choice == "3":
-            withdraw_money_user(balance)
+            withdraw_money_user(balance) #function call
         elif choice == "4":
-            Pay_UtilityBills(balance)
+            Pay_UtilityBills(balance) #function call
         elif choice == "5":
-            current_pin = change_Pin(current_pin)
+            current_pin = change_Pin(current_pin) #function call
         elif choice == "6":
-            generate_receipt_user(balance)
+            generate_receipt_user(balance) #function call
             print("Session ended.")
             break
         elif choice == "7":
-            main_menu()
+            main_menu() #function call
             break
         else:
             print("Invalid choice.")
-            main_menu_general()
+            main_menu_general() #function call
 
 #function to view balance of the general user
 def view_balance_user(balance):
