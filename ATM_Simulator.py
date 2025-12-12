@@ -57,52 +57,6 @@ def change_Pin(current_Pin):
     print("PIN changed successfully!")
     return new_pin
 
-#function to view balance of the general user
-def view_balance_user(balance):
-    print("Your balance is",balance)
-    return balance
-
-def deposit_money_user(balance):
-    amount = input("Enter amount to deposit: ")
-    if amount.isdigit():
-        amount = int(amount)
-        if amount > 0:
-            balance = balance + amount
-            print("Deposited",amount)
-            print("New Balance",balance)
-        else:
-            print("Amount must be positive")
-            print("Try Again")
-            deposit_money_user(balance)
-    else:
-        print("Invalid Amount")
-        print("Try Again")
-        deposit_money_user(balance)
-    return balance
-
-def withdraw_money_user(balance):
-    amount = input("Enter amount to withdraw: ")
-    if amount.isdigit():
-        amount = int(amount)
-        if amount <= balance:
-            balance = balance - amount
-            print("Withdrawn:", amount)
-            print("New balance:", balance)
-        else:
-            print("Insufficient balance.")
-            print("Try Again")
-            withdraw_money_user(balance)
-    else:
-        print("Invalid amount")
-        print("Try Again")
-        withdraw_money_user(balance)
-    return balance
-    
-def generate_receipt_user(balance):
-    print(balance)
-    print("Action Performed")
-    print("Current Balance")
-
 #function to check if an account exists for the account number entered by the user
 def find_account(account_no):
     for acc in accounts:
