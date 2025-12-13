@@ -12,11 +12,13 @@ accounts = [
     {"name": "Maria",  "account_no": "42819573", "pin": "8888", "balance": 22000, "initial_balance": 22000}
 ]
 
-#function that works for both general users and account holders
+#function to pay utility bills
 def Pay_UtilityBills(balance):
     global transaction_history
     while True:
-        print("\n----- PAY UTILITY BILLS -----")
+        print("\n===================================")
+        print("          PAY UTILITY BILLS         ")
+        print("===================================\n")
         print("1. Electricity Bill")
         print("2. Gas Bill")
         print("3. Water Bill")
