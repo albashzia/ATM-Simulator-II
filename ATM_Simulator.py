@@ -267,9 +267,9 @@ def main_menu():
         print("2.  Exit")
         choice = input("Enter your choice: ")
         if choice == "1":
-            account_holder_login()
+            account_holder_login() # calls the function to login the member
         elif choice == "2":
-            print("Exiting program... Goodbye!")
+            print("Exiting program.")
             exit()   # terminates the program
         else:
             print("Invalid choice. Try again.")
