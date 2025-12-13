@@ -252,8 +252,7 @@ def member_menu(acc):
         print("3.  Withdraw Money")
         print("4.  Pay Utility Bills")
         print("5.  Change PIN")
-        print("6.  Exit")
-        print("7.  Return to Main Menu")
+        print("6.  Exit to main")
         choice = input("Enter Choice: ")
         if choice == "1":
             view_balance_member(acc)
@@ -268,9 +267,6 @@ def member_menu(acc):
         elif choice == "6":
             generate_receipt_member(acc)
             print("Session ended.")
-            break
-        elif choice == "7":
-            main_menu()
             break
         else:
             print("Invalid Choice")
