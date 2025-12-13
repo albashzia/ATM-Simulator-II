@@ -84,8 +84,11 @@ def change_Pin(current_Pin):
     while True:
     # Take new PIN input
         new_pin = input("Enter new PIN: ")
-        if not new_pin.isdigit() or len(new_pin) != 4:
+        if not new_pin.isdigit() :
             print("Invalid PIN. PIN must contain only digits.")
+            continue
+        if len(new_pin) != 4:
+            print("Invalid PIN. PIN must contain only 4 digits.")
             continue
         confirm_pin = input("Re-enter new PIN: ")
         # Confirm both PIN entries match
@@ -124,7 +127,7 @@ def account_holder_login():
             print("Returning to main menu...")
             return
 
-            #search for account
+        #search for account
         acc = find_account(acc_no)
 
         if acc is None:
@@ -133,10 +136,15 @@ def account_holder_login():
 
         global transaction_history
         transaction_history = []   # reset for each session
-        attempts = 3 #Max pin attempts allowed
+        attempts = 3 #Maximum pin attempts allowed
 
         while attempts > 0:
             pin = input("Enter pin: ")
+
+            if not pin.isdigit():
+                print("Invalid PIN. PIN must contain only digits.")
+                continue
+
             if pin == acc["pin"]:
                 print("\nWelcome", acc["name"])
                 member_menu(acc)
