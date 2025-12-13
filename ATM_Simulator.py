@@ -10,12 +10,16 @@ accounts = [
     {"name": "Fatima", "account_no": "67358214", "pin": "6666", "balance": 40000, "initial_balance": 40000},
     {"name": "Zain",   "account_no": "15983726", "pin": "7777", "balance": 8000,  "initial_balance": 8000},
     {"name": "Maria",  "account_no": "42819573", "pin": "8888", "balance": 22000, "initial_balance": 22000}
-]
-
-#function to pay utility bills
+] 
+"""
+    This function allows the account holder to pay different utility bills
+    such as electricity, gas, water, internet, and mobile bills by deducting
+    the bill amount from the current account balance and updating it.
+"""
 def Pay_UtilityBills(balance):
     global transaction_history
     while True:
+        # Display utility bill menu
         print("\n===================================")
         print("          PAY UTILITY BILLS         ")
         print("===================================\n")
@@ -25,17 +29,21 @@ def Pay_UtilityBills(balance):
         print("4.  Internet/Wifi Bill")
         print("5.  Telephone/Mobile Bill")
         print("6.  Back to Main Menu")
+         # Take user choice
         choice = input("\nEnter your choice: ")
-        
         if choice in ["1", "2", "3", "4", "5"]:
             while True:
+                # Ask for bill amount
                 amount = input("\nEnter bill amount: ")
+                # Validate numeric input
                 if amount.isdigit():
                     amount = int(amount)
+                    # Check if sufficient balance exists
                     if amount <= balance:
-                        balance -= amount
+                        balance -= amount # Check if sufficient balance exists
                         print("\nBill paid successfully")
                         print("Remaining Balance:", balance)
+                        # Map bill type with choice
                         bill_types = {
                             "1": "Electricity",
                             "2": "Gas",
@@ -43,6 +51,7 @@ def Pay_UtilityBills(balance):
                             "4": "Internet/Wifi",
                             "5": "Telephone/Mobile"
                         }
+                        # Store transaction in history
                         current_bill = bill_types[choice]
                         transaction_history.append("Paid " + str(current_bill) + " bill: Rs " + str(amount))
                         break
@@ -52,37 +61,48 @@ def Pay_UtilityBills(balance):
                     print("Invalid bill amount. Try again.")
             break  # exit main choice loop after successful bill payment
         elif choice == "6":
+            # Return to main menu
             print("Returning to main menu...")
             break
         else:
             print("Invalid choice. Try again.")
     return balance
 
-
-#function to change pin
+"""
+    This function allows the account holder to securely change their ATM PIN
+    after verifying the old PIN and confirming the new PIN.
+"""
 def change_Pin(current_Pin):
     global transaction_history
     print("\n== Change PIN ==")
+    # Verify old PIN
     old_pin = input("Enter old PIN: ")
     if old_pin != current_Pin:
         print("Incorrect PIN")
         return current_Pin
+    # Take new PIN input
     new_pin = input("Enter new PIN: ")
     confirm_pin = input("Re-enter new PIN: ")
+    # Confirm both PIN entries match
     if new_pin != confirm_pin:
         print("PINs do not match")
         return current_Pin
     print("PIN changed successfully!")
+    # Store PIN change operation
     transaction_history.append("PIN changed successfully")
 
     return new_pin
 
-#function to check if an account exists for the account number entered by the user
+"""
+    This function searches for an account in the system using the provided
+    account number and returns the account details if found.
+"""
 def find_account(account_no):
-    for acc in accounts:
+    # Loop through all stored accounts
+    for acc in accounts: 
         if acc["account_no"] == account_no:
-            return acc
-    return None
+            return acc # Account found
+    return None # Account not found
 
 #function to login to accounts by accepting pins and allowing only 3 attempts 
 def account_holder_login():
