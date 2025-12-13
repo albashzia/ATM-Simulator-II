@@ -162,7 +162,9 @@ def generate_receipt_member(acc):
 
 def member_menu(acc):
     while True:
-        print("\n--- ATM Menu (Account Holder) ---")
+        print("\n===================================")
+        print("              ATM MENU")
+        print("===================================\n")
         print("1. View Balance")
         print("2. Deposit Money")
         print("3. Withdraw Money")
