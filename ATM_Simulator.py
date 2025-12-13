@@ -124,7 +124,7 @@ def account_holder_login():
     while attempts > 0:
         pin = input("Enter pin:")
         if pin == acc["pin"]:
-            print("Welcome",acc["name"])
+            print("\nWelcome",acc["name"])
             member_menu(acc)
             return
         else:
@@ -133,23 +133,36 @@ def account_holder_login():
     # Lock account after failed attempts
     print("Too many failed attempts. Account Locked!")
 
+
+"""
+    This function displays the current balance of the logged-in account holder
+    and records the balance inquiry in the transaction history.
+"""
 def view_balance_member(acc):
     global transaction_history
     print("\n======Displaying Balance======")
     print("Account Holder: ",acc["name"])
     print("Balance :",acc["balance"])
+    # Log balance inquiry
     transaction_history.append("Viewed balance: Rs " + str(acc["balance"]))
 
+"""
+    This function allows the account holder to deposit a valid amount of money
+    into their account and updates the balance accordingly.
+"""
 def deposit_money_member(acc):
     global transaction_history
     while True:
+        # Ask for deposit amount
         amount = input("\nEnter amount to deposit: ")
+        # Validate numeric input
         if amount.isdigit():
             amount = int(amount)
             if amount > 0:
-                acc["balance"] += amount
+                acc["balance"] += amount # Add amount to balance
                 print("Deposit Successful")
                 print("New balance: ", acc["balance"])
+                # Log deposit transaction
                 transaction_history.append("Deposited Rs " + str(amount))
                 break
             else:
@@ -157,17 +170,24 @@ def deposit_money_member(acc):
         else:
             print("Invalid Amount. Try again.")
 
-
+"""
+    This function allows the account holder to withdraw money from their account
+    after checking that sufficient balance is available.
+"""
 def withdraw_money_member(acc):
     global transaction_history
     while True:
+        # Ask for withdrawal amount
         amount = input("\nEnter amount to withdraw: ")
         if amount.isdigit():
+            # Validate numeric input
             amount = int(amount)
+            # Check available balance
             if amount <= acc["balance"]:
-                acc["balance"] -= amount
+                acc["balance"] -= amount # Deduct amount
                 print("Withdraw Successful!")
                 print("New Balance :", acc["balance"])
+                # Log withdrawal
                 transaction_history.append("Withdrew Rs " + str(amount))
                 break
             else:
@@ -175,8 +195,10 @@ def withdraw_money_member(acc):
         else:
             print("Invalid Amount. Try again.")
 
-
-#function to generate receipt upon completion of actions by the user
+"""
+    This function generates and displays a receipt showing the account holder’s
+    starting balance, closing balance, and complete transaction history.
+"""
 def generate_receipt_member(acc): 
     print("\n===================================")
     print("              RECEIPT               ")
@@ -187,12 +209,17 @@ def generate_receipt_member(acc):
     print("\n-----------------------------------")
     print("         TRANSACTION HISTORY        ")
     print("-----------------------------------")
+    # Display all transactions
     if not transaction_history:
         print("No actions performed.")
     else:
         for t in transaction_history:
             print("-", t)
 
+"""
+    This function displays the ATM menu for the logged-in account holder and
+    allows them to perform different banking operations.
+"""
 def member_menu(acc):
     while True:
         print("\n===================================")
@@ -227,6 +254,10 @@ def member_menu(acc):
             print("Invalid Choice")
             member_menu(acc)
 
+"""
+    This function displays the main ATM welcome menu and controls the overall
+    flow of the ATM program until the user chooses to exit.
+"""
 def main_menu():
     while True:
         print("\n===========================")
