@@ -81,13 +81,19 @@ def change_Pin(current_Pin):
     if old_pin != current_Pin:
         print("Incorrect PIN")
         return current_Pin
+    while True:
     # Take new PIN input
-    new_pin = input("Enter new PIN: ")
-    confirm_pin = input("Re-enter new PIN: ")
-    # Confirm both PIN entries match
-    if new_pin != confirm_pin:
-        print("PINs do not match")
-        return current_Pin
+        new_pin = input("Enter new PIN: ")
+        if not new_pin.isdigit() or len(new_pin) != 4:
+            print("Invalid PIN. PIN must contain only digits.")
+            continue
+        confirm_pin = input("Re-enter new PIN: ")
+        # Confirm both PIN entries match
+        if new_pin != confirm_pin:
+            print("PINs do not match...Try Again")
+            continue
+
+        break
     print("PIN changed successfully!")
     # Store PIN change operation
     transaction_history.append("PIN changed successfully")
