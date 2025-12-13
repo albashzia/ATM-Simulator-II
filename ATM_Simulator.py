@@ -1,4 +1,5 @@
-#Default accounts holding data which can be manipulated and accessed by account holders
+# This list stores default bank account records that can be accessed
+#  and modified by account holders during ATM operations.
 accounts = [
     {"name": "Ahmed",  "account_no": "49217385", "pin": "1234", "balance": 12000, "initial_balance": 12000},
     {"name": "Fatima", "account_no": "83726149", "pin": "6789", "balance": 18000, "initial_balance": 18000},
@@ -272,8 +273,6 @@ def main_menu():
             print("Exiting program.")
             exit()   # terminates the program
         else:
-            print("Invalid choice. Try again.")
-
-
+            print("Invalid choice. Try again.")    
 #=========== Program Start ==============
 main_menu()
