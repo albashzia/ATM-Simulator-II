@@ -104,9 +104,14 @@ def find_account(account_no):
             return acc # Account found
     return None # Account not found
 
-#function to login to accounts by accepting pins and allowing only 3 attempts 
+"""
+    This function handles account holder login by verifying the account number
+    and PIN, while limiting the number of incorrect login attempts.
+"""
 def account_holder_login():
+    # Ask for account number
     acc_no = input("\nEnter account number: ")
+    # Search for account
     acc = find_account(acc_no)
     if acc is None:
         print("Account not found")
@@ -115,7 +120,7 @@ def account_holder_login():
     global transaction_history
     transaction_history = []   # reset for each session
 
-    attempts = 3
+    attempts = 3  # Maximum PIN attempts allowed
     while attempts > 0:
         pin = input("Enter pin:")
         if pin == acc["pin"]:
@@ -125,6 +130,7 @@ def account_holder_login():
         else:
             attempts = attempts - 1
             print("Incorrect Pin! Attempts left",attempts)
+    # Lock account after failed attempts
     print("Too many failed attempts. Account Locked!")
 
 def view_balance_member(acc):
