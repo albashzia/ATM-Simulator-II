@@ -109,7 +109,8 @@ def account_holder_login():
 
 def view_balance_member(acc):
     global transaction_history
-    print("\nAccount Holder: ",acc["name"])
+    print("\n======Displaying Balance======")
+    print("Account Holder: ",acc["name"])
     print("Balance :",acc["balance"])
     transaction_history.append("Viewed balance: Rs " + str(acc["balance"]))
 
