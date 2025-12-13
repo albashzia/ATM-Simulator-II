@@ -151,11 +151,15 @@ def withdraw_money_member(acc):
 
 #function to generate receipt upon completion of actions by the user
 def generate_receipt_member(acc): 
-    print("\n====== RECEIPT =======")
+    print("\n===================================")
+    print("              RECEIPT               ")
+    print("===================================\n")
     print(acc["name"])           
     print("Starting Balance = ", acc["initial_balance"]) 
     print("Closing Balance = ", acc["balance"])
-    print("\n--- Transaction History ---")
+    print("\n-----------------------------------")
+    print("         TRANSACTION HISTORY        ")
+    print("-----------------------------------")
     if not transaction_history:
         print("No actions performed.")
     else:
