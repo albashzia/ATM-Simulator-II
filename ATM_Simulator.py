@@ -25,16 +25,16 @@ def Pay_UtilityBills(balance):
         print("4.  Internet/Wifi Bill")
         print("5.  Telephone/Mobile Bill")
         print("6.  Back to Main Menu")
-        choice = input("Enter your choice: ")
+        choice = input("\nEnter your choice: ")
         
         if choice in ["1", "2", "3", "4", "5"]:
             while True:
-                amount = input("Enter bill amount: ")
+                amount = input("\nEnter bill amount: ")
                 if amount.isdigit():
                     amount = int(amount)
                     if amount <= balance:
                         balance -= amount
-                        print("Bill paid successfully")
+                        print("\nBill paid successfully")
                         print("Remaining Balance:", balance)
                         bill_types = {
                             "1": "Electricity",
@@ -86,7 +86,7 @@ def find_account(account_no):
 
 #function to login to accounts by accepting pins and allowing only 3 attempts 
 def account_holder_login():
-    acc_no = input("Enter account number: ")
+    acc_no = input("\nEnter account number: ")
     acc = find_account(acc_no)
     if acc is None:
         print("Account not found")
@@ -109,14 +109,14 @@ def account_holder_login():
 
 def view_balance_member(acc):
     global transaction_history
-    print("Account Holder: ",acc["name"])
+    print("\nAccount Holder: ",acc["name"])
     print("Balance :",acc["balance"])
     transaction_history.append("Viewed balance: Rs " + str(acc["balance"]))
 
 def deposit_money_member(acc):
     global transaction_history
     while True:
-        amount = input("Enter amount to deposit: ")
+        amount = input("\nEnter amount to deposit: ")
         if amount.isdigit():
             amount = int(amount)
             if amount > 0:
@@ -134,7 +134,7 @@ def deposit_money_member(acc):
 def withdraw_money_member(acc):
     global transaction_history
     while True:
-        amount = input("Enter amount to withdraw: ")
+        amount = input("\nEnter amount to withdraw: ")
         if amount.isdigit():
             amount = int(amount)
             if amount <= acc["balance"]:
