@@ -14,36 +14,52 @@ accounts = [
 
 #function that works for both general users and account holders
 def Pay_UtilityBills(balance):
-    print("\n----- PAY UTILITY BILLS -----")
-    print("1. Electricity Bill")
-    print("2. Gas Bill")
-    print("3. Water Bill")
-    print("4. Internet/Wifi Bill")
-    print("5. Telephone/Mobile Bill")
-    print("6. Back to Main Menu")
-    choice = input("Enter your choice: ")
-    if choice in ["1", "2", "3", "4", "5"]:
-        amount = input("Enter bill amount: ")
-        if amount.isdigit():
-            amount = int(amount)
-            if amount > balance:
-                print("Balance is insufficient")
-            else:
-                balance = balance - amount
-                print("Bill paid successfully")
-                print("Remaining Balance:", balance)
+    global transaction_history
+    while True:
+        print("\n----- PAY UTILITY BILLS -----")
+        print("1. Electricity Bill")
+        print("2. Gas Bill")
+        print("3. Water Bill")
+        print("4. Internet/Wifi Bill")
+        print("5. Telephone/Mobile Bill")
+        print("6. Back to Main Menu")
+        choice = input("Enter your choice: ")
+        
+        if choice in ["1", "2", "3", "4", "5"]:
+            while True:
+                amount = input("Enter bill amount: ")
+                if amount.isdigit():
+                    amount = int(amount)
+                    if amount <= balance:
+                        balance -= amount
+                        print("Bill paid successfully")
+                        print("Remaining Balance:", balance)
+                        bill_types = {
+                            "1": "Electricity",
+                            "2": "Gas",
+                            "3": "Water",
+                            "4": "Internet/Wifi",
+                            "5": "Telephone/Mobile"
+                        }
+                        current_bill = bill_types[choice]
+                        transaction_history.append("Paid " + str(current_bill) + " bill: Rs " + str(amount))
+                        break
+                    else:
+                        print("Balance is insufficient. Try again.")
+                else:
+                    print("Invalid bill amount. Try again.")
+            break  # exit main choice loop after successful bill payment
+        elif choice == "6":
+            print("Returning to main menu...")
+            break
         else:
-            print("Invalid bill amount")
-            print("Try Again")
-            Pay_UtilityBills(balance)
-    elif choice == "6":
-        print("Returning to main menu...")
-    else:
-        print("Invalid choice. Returning to main menu...")
+            print("Invalid choice. Try again.")
     return balance
+
 
 #function to change pin
 def change_Pin(current_Pin):
+    global transaction_history
     print("\n== Change PIN ==")
     old_pin = input("Enter old PIN: ")
     if old_pin != current_Pin:
@@ -55,6 +71,8 @@ def change_Pin(current_Pin):
         print("PINs do not match")
         return current_Pin
     print("PIN changed successfully!")
+    transaction_history.append("PIN changed successfully")
+
     return new_pin
 
 #function to check if an account exists for the account number entered by the user
@@ -72,6 +90,9 @@ def account_holder_login():
         print("Account not found")
         main_menu()
         return
+    global transaction_history
+    transaction_history = []   # reset for each session
+
     attempts = 3
     while attempts > 0:
         pin = input("Enter pin:")
@@ -85,49 +106,59 @@ def account_holder_login():
     print("Too many failed attempts. Account Locked!")
 
 def view_balance_member(acc):
+    global transaction_history
     print("Account Holder: ",acc["name"])
     print("Balance :",acc["balance"])
+    transaction_history.append("Viewed balance: Rs " + str(acc["balance"]))
 
 def deposit_money_member(acc):
-    amount = input("Enter amount to deposit: ")
-    if amount.isdigit():
-        amount = int(amount)
-        if amount > 0:
-            acc["balance"] = acc["balance"] + amount
-            print("Deposit Successful")
-            print("New balance: ",acc["balance"])
+    global transaction_history
+    while True:
+        amount = input("Enter amount to deposit: ")
+        if amount.isdigit():
+            amount = int(amount)
+            if amount > 0:
+                acc["balance"] += amount
+                print("Deposit Successful")
+                print("New balance: ", acc["balance"])
+                transaction_history.append("Deposited Rs " + str(amount))
+                break
+            else:
+                print("Amount must be positive. Try again.")
         else:
-            print("Amount must be positive")
-            print("Try again")
-            deposit_money_member(acc)
-    else:
-        print("Invalid Amount")
-        print("Try Again")
-        deposit_money_member(acc)
+            print("Invalid Amount. Try again.")
+
 
 def withdraw_money_member(acc):
-    amount = input("Enter amount to withdraw: ")
-    if amount.isdigit():
-        amount = int(amount)
-        if amount <= acc["balance"]:
-            acc["balance"] = acc["balance"] - amount
-            print("Withdraw Successful!")
-            print("New Balance :",acc["balance"])
+    global transaction_history
+    while True:
+        amount = input("Enter amount to withdraw: ")
+        if amount.isdigit():
+            amount = int(amount)
+            if amount <= acc["balance"]:
+                acc["balance"] -= amount
+                print("Withdraw Successful!")
+                print("New Balance :", acc["balance"])
+                transaction_history.append("Withdrew Rs " + str(amount))
+                break
+            else:
+                print("Insufficient Balance. Try again.")
         else:
-            print("Insufficient Balance")
-            print("Try again")
-            withdraw_money_member(acc)
-    else:
-        print("Invalid Amount")
-        print("Try again")
-        withdraw_money_member(acc)
+            print("Invalid Amount. Try again.")
+
 
 #function to generate receipt upon completion of actions by the user
 def generate_receipt_member(acc): 
-    print("\n======RECEIPT=======")
+    print("\n====== RECEIPT =======")
     print(acc["name"])           
     print("Starting Balance = ", acc["initial_balance"]) 
     print("Closing Balance = ", acc["balance"])
+    print("\n--- Transaction History ---")
+    if not transaction_history:
+        print("No actions performed.")
+    else:
+        for t in transaction_history:
+            print("-", t)
 
 def member_menu(acc):
     while True:
@@ -164,8 +195,19 @@ def member_menu(acc):
 def main_menu():
     while True:
         print("\n===========================")
-        print("======WELCOME TO ATM======")
+        print("====== WELCOME TO ATM =====")
         print("===========================\n")
-        account_holder_login()
+        print("1. Perform an Operation")
+        print("2. Exit")
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            account_holder_login()
+        elif choice == "2":
+            print("Exiting program... Goodbye!")
+            exit()   # terminates the program
+        else:
+            print("Invalid choice. Try again.")
+
+
 #=========== Program Start ==============
 main_menu()
