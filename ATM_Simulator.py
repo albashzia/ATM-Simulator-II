@@ -11,7 +11,7 @@ accounts = [
     {"name": "Fatima", "account_no": "67358214", "pin": "6666", "balance": 40000, "initial_balance": 40000},
     {"name": "Zain",   "account_no": "15983726", "pin": "7777", "balance": 8000,  "initial_balance": 8000},
     {"name": "Maria",  "account_no": "42819573", "pin": "8888", "balance": 22000, "initial_balance": 22000}
-] 
+]
 """
     This function allows the account holder to pay different utility bills
     such as electricity, gas, water, internet, and mobile bills by deducting
@@ -100,7 +100,7 @@ def change_Pin(current_Pin):
 """
 def find_account(account_no):
     # Loop through all stored accounts
-    for acc in accounts: 
+    for acc in accounts:
         if acc["account_no"] == account_no:
             return acc # Account found
     return None # Account not found
@@ -110,30 +110,37 @@ def find_account(account_no):
     and PIN, while limiting the number of incorrect login attempts.
 """
 def account_holder_login():
-    # Ask for account number
-    acc_no = input("\nEnter account number: ")
-    # Search for account
-    acc = find_account(acc_no)
-    if acc is None:
-        print("Account not found")
-        main_menu()
-        return
-    global transaction_history
-    transaction_history = []   # reset for each session
 
-    attempts = 3  # Maximum PIN attempts allowed
-    while attempts > 0:
-        pin = input("Enter pin:")
-        if pin == acc["pin"]:
-            print("\nWelcome",acc["name"])
-            member_menu(acc)
+    while True:
+        acc_no = input("\nEnter account number (or 0 to exit): ")
+        #if 0 then exit
+        if acc_no == "0":
+            print("Returning to main menu...")
             return
-        else:
-            attempts = attempts - 1
-            print("Incorrect Pin! Attempts left",attempts)
-    # Lock account after failed attempts
-    print("Too many failed attempts. Account Locked!")
 
+            #search for account
+        acc = find_account(acc_no)
+
+        if acc is None:
+            print("Account not found. Please try again.")
+            continue   # ask again instead of going to main menu
+
+        global transaction_history
+        transaction_history = []   # reset for each session
+        attempts = 3 #Max pin attempts allowed
+
+        while attempts > 0:
+            pin = input("Enter pin: ")
+            if pin == acc["pin"]:
+                print("\nWelcome", acc["name"])
+                member_menu(acc)
+                return
+            else:
+                attempts = attempts - 1
+                print("Incorrect Pin! Attempts left:", attempts)
+
+        print("Too many failed attempts. Account Locked!")
+        return
 
 """
     This function displays the current balance of the logged-in account holder
@@ -200,12 +207,12 @@ def withdraw_money_member(acc):
     This function generates and displays a receipt showing the account holder’s
     starting balance, closing balance, and complete transaction history.
 """
-def generate_receipt_member(acc): 
+def generate_receipt_member(acc):
     print("\n===================================")
     print("              RECEIPT               ")
     print("===================================\n")
-    print(acc["name"])           
-    print("Starting Balance = ", acc["initial_balance"]) 
+    print(acc["name"])
+    print("Starting Balance = ", acc["initial_balance"])
     print("Closing Balance = ", acc["balance"])
     print("\n-----------------------------------")
     print("         TRANSACTION HISTORY        ")
@@ -273,6 +280,6 @@ def main_menu():
             print("Exiting program.")
             exit()   # terminates the program
         else:
-            print("Invalid choice. Try again.")    
+            print("Invalid choice. Try again.")
 #=========== Program Start ==============
 main_menu()
