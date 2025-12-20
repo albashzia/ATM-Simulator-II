@@ -292,4 +292,4 @@ def main_menu():
         else:
             print("Invalid choice. Try again.")
 #=========== Program Start ==============
-main_menu()
+main_menu() #call to the main_menu() function
