@@ -84,10 +84,10 @@ def change_Pin(current_Pin):
     while True:
     # Take new PIN input
         new_pin = input("Enter new PIN: ")
-        if not new_pin.isdigit() :
+        if not new_pin.isdigit() : #validating the composition of new pin 
             print("Invalid PIN. PIN must contain only digits.")
             continue
-        if len(new_pin) != 4:
+        if len(new_pin) != 4: #validating the length of new pin
             print("Invalid PIN. PIN must contain only 4 digits.")
             continue
         confirm_pin = input("Re-enter new PIN: ")
