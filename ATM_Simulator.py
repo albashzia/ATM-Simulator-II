@@ -244,6 +244,7 @@ def generate_receipt_member(acc):
 """
 def member_menu(acc):
     while True:
+        # displaying menu
         print("\n===================================")
         print("              ATM MENU")
         print("===================================\n")
@@ -253,19 +254,19 @@ def member_menu(acc):
         print("4.  Pay Utility Bills")
         print("5.  Change PIN")
         print("6.  Exit to main")
-        choice = input("Enter Choice: ")
+        choice = input("Enter Choice: ") # taking user's choice
         if choice == "1":
-            view_balance_member(acc)
+            view_balance_member(acc) # call to function
         elif choice == "2":
-            deposit_money_member(acc)
+            deposit_money_member(acc) # call to function
         elif choice == "3":
-            withdraw_money_member(acc)
+            withdraw_money_member(acc) # call to function
         elif choice == "4":
-            acc["balance"] = Pay_UtilityBills(acc["balance"])
+            acc["balance"] = Pay_UtilityBills(acc["balance"]) # call to function
         elif choice == "5":
-            acc["pin"] = change_Pin(acc["pin"])
+            acc["pin"] = change_Pin(acc["pin"]) # call to function
         elif choice == "6":
-            generate_receipt_member(acc)
+            generate_receipt_member(acc) # call to function
             print("Session ended.")
             break
         else:
