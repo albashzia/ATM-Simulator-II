@@ -73,14 +73,14 @@ def pay_utility_bills(balance):
     This function allows the account holder to securely change their ATM PIN
     after verifying the old PIN and confirming the new PIN.
 """
-def change_pin(current_Pin):
+def change_pin(current_pin):
     global transaction_history
     print("\n== Change PIN ==")
     # Verify old PIN
     old_pin = input("Enter old PIN: ")
-    if old_pin != current_Pin:
+    if old_pin != current_pin:
         print("Incorrect PIN")
-        return current_Pin
+        return current_pin
     while True:
     # Take new PIN input
         new_pin = input("Enter new PIN: ")
