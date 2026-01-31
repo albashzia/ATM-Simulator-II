@@ -73,7 +73,7 @@ def pay_utility_bills(balance):
     This function allows the account holder to securely change their ATM PIN
     after verifying the old PIN and confirming the new PIN.
 """
-def change_Pin(current_Pin):
+def change_pin(current_Pin):
     global transaction_history
     print("\n== Change PIN ==")
     # Verify old PIN
@@ -264,7 +264,7 @@ def member_menu(acc):
         elif choice == "4":
             acc["balance"] = pay_utility_bills(acc["balance"]) # call to function
         elif choice == "5":
-            acc["pin"] = change_Pin(acc["pin"]) # call to function
+            acc["pin"] = change_pin(acc["pin"]) # call to function
         elif choice == "6":
             generate_receipt_member(acc) # call to function
             print("Session ended.")
