@@ -17,7 +17,7 @@ accounts = [
     such as electricity, gas, water, internet, and mobile bills by deducting
     the bill amount from the current account balance and updating it.
 """
-def Pay_UtilityBills(balance):
+def pay_utility_bills(balance):
     global transaction_history
     while True:
         # Display utility bill menu
@@ -262,7 +262,7 @@ def member_menu(acc):
         elif choice == "3":
             withdraw_money_member(acc) # call to function
         elif choice == "4":
-            acc["balance"] = Pay_UtilityBills(acc["balance"]) # call to function
+            acc["balance"] = pay_utility_bills(acc["balance"]) # call to function
         elif choice == "5":
             acc["pin"] = change_Pin(acc["pin"]) # call to function
         elif choice == "6":
